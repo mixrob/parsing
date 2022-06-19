@@ -1,11 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
+from time import sleep
 
+
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"}
 
 for count in range(1, 8):
+
+    sleep(3)
     url = f"https://scrapingclub.com/exercise/list_basic/?page={count}"
 
-    response = requests.get(url)
+    response = requests.get(url, headers=headers)
 
     soup = BeautifulSoup(response.text, "lxml")
 
